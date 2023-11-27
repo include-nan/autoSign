@@ -387,11 +387,11 @@ class BiliBiliCheckIn(object):
             )
             print(msg)
             if SEND_KEY == '1':
-                notify.send(title=u"#哔哩哔哩签到", msg=msg)
+                notify.send(title=u"#哔哩哔哩签到", content=msg)
             return msg
         else:
             print("登录失败Cookie已失效")
-            notify.send(title=u"#哔哩哔哩签到", msg="登录失败 Cookie已失效")
+            notify.send(title=u"#哔哩哔哩签到", content="登录失败 Cookie已失效")
 
 
 if __name__ == "__main__":
