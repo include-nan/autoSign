@@ -386,7 +386,7 @@ class BiliBiliCheckIn(object):
                 f"按当前速度升级还需: {update_data}天\n{live_stats}"
             )
             print(msg)
-            if SEND_KEY == '':
+            if SEND_KEY == '1':
                 notify.send(title=u"#哔哩哔哩签到", msg=msg)
             return msg
         else:
@@ -402,9 +402,10 @@ if __name__ == "__main__":
     # 未填写参数取消运行
     if os.environ.get('BILI_COOKIE'):
         BILI_COOKIE = os.environ['BILI_COOKIE'].replace(" ", "")
-        _bilibili_cookie_list = {cookie.split('=')[0]: cookie.split('=')[-1] for cookie in BILI_COOKIE.split(';')}
+        ckList = BILI_COOKIE.split('@')
+        for ck in ckList:
+            _bilibili_cookie_list = {cookie.split('=')[0]: cookie.split('=')[-1] for cookie in ck.split(';')}
+            BiliBiliCheckIn(bilibili_cookie_list=_bilibili_cookie_list).main()
     else:
         print("未填写哔哩哔哩账号密码或COOKIE取消运行")
         exit(0)
-
-    BiliBiliCheckIn(bilibili_cookie_list=_bilibili_cookie_list).main()
