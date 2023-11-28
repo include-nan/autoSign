@@ -60,15 +60,15 @@ async function start() {
         //重复签到,不推送仅输出，因为每天会签到两次防止抽奖失败.
         console.log("爱奇艺签到-" + content + '\n重复签到，取消推送')
     } else if (SEND_KEY) {
+        await notify.sendNotify("#爱奇艺签到-" + timeFormat(UTC8), content);
+        console.log("爱奇艺签到-" + content)
+    } else {
         if (content.includes("Cookie")) {
-            await notify.sendNotify("爱奇艺签到-" + timeFormat(UTC8), content);
+            await notify.sendNotify("#爱奇艺签到-" + timeFormat(UTC8), content);
             console.log("爱奇艺签到-" + content)
         } else {
             console.log("爱奇艺签到-" + content)
         }
-    } else {
-        await notify.sendNotify("爱奇艺签到-" + timeFormat(UTC8), content);
-        console.log("爱奇艺签到-" + content)
     }
 
     //运行完成后，删除下载的文件
