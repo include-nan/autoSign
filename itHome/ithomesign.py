@@ -5,6 +5,7 @@
 @date:2018-08-28 11:37
 #2020-03-08 添加云日历windows客户端签到
 """
+import json
 import os
 import binascii
 import datetime
@@ -843,7 +844,7 @@ def des_descrypt(s):
 
 
 def cn(x):
-    return x.decode("u8")
+    return json.loads(x.decode("u8"))
 
 
 def getNowTime13():
@@ -989,13 +990,14 @@ class IIhomeSign():
 
 
 if __name__ == "__main__":
+    os.environ.setdefault("HASH_CODE", "ECECEE2DDF9941FBA43DFEF8A6086E0571509F2826F3F320F977FE43E584A351AD5850FF19B20744CEBE5EE85A5D9D9ECB4F0D75613634C5BE49B5F3DE9625CB3DE44B9E54859E810C298E0D08D703AF")
     user_hash = os.environ['HASH_CODE']
     ithome = IIhomeSign(userhash=user_hash)
 
     home = cn(ithome.sign()).get("msg")
     lapin = cn(ithome.signlapin()).get("msg")
     yunrili = cn(ithome.signyunrili()).get("msg")
-    yunriliAndroid = cn(ithome.signyunriliAndroid())
+    yunriliAndroid = cn(ithome.signyunriliAndroid()).get("msg")
 
     msg = (
         f"it之家签到结果: {home}\n"
