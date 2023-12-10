@@ -992,10 +992,17 @@ if __name__ == "__main__":
     user_hash = os.environ['HASH_CODE']
     ithome = IIhomeSign(userhash=user_hash)
 
-    msg = cn(ithome.sign())
-    msg += cn(ithome.signlapin())
-    msg += cn(ithome.signyunrili())
-    msg += cn(ithome.signyunriliAndroid())
+    home = cn(ithome.sign()).get("msg")
+    lapin = cn(ithome.signlapin()).get("msg")
+    yunrili = cn(ithome.signyunrili()).get("msg")
+    yunriliAndroid = cn(ithome.signyunriliAndroid())
+
+    msg = (
+        f"it之家签到结果: {home}\n"
+        f"辣品签到结果: {lapin}\n"
+        f"云日历签到结果: {yunrili}\n"
+        f"云日历安卓签到结果: {yunriliAndroid}\n"
+    )
 
     print(msg)
     if msg.find("失败".encode()) > -1:
