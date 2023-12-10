@@ -992,10 +992,10 @@ if __name__ == "__main__":
     user_hash = os.environ['HASH_CODE']
     ithome = IIhomeSign(userhash=user_hash)
 
-    msg = ithome.sign()
-    msg += ithome.signlapin()
-    msg += ithome.signyunrili()
-    msg += ithome.signyunriliAndroid()
+    msg = cn(ithome.sign())
+    msg += cn(ithome.signlapin())
+    msg += cn(ithome.signyunrili())
+    msg += cn(ithome.signyunriliAndroid())
 
     print(msg)
     if msg.find("失败".encode()) > -1:
