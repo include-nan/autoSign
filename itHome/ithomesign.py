@@ -13,7 +13,7 @@ import time
 import requests
 import sys
 
-# import notify
+import notify
 
 
 # _pythonMajorVersion is used to handle Python2 and Python3 differences.
