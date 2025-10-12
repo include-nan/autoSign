@@ -1,7 +1,7 @@
 # cron:10 0 * * *
 # new Env('NS&DF一体化签到');
 """
-NodeSeek&DeepFlood论坛-自动签到Cookie版
+NodeSeek&DeepFlood论坛签到
 Version: 1.1.0
 create Time: 2025-5-13 16:21:43
 Last Updated: 2025-10-2 15:30:00
@@ -292,16 +292,16 @@ class DeepFloodForum(BaseForum):
 
 
 
-def send_ql_notification(title, content):
+def send_ql_notification(stitle, scontent):
     """
     发送消息到青龙面板通知系统
 
-    :param title: 消息标题
-    :param content: 消息内容
+    :param stitle: 消息标题
+    :param scontent: 消息内容
     """
 
     try:
-        response = notify.send({"title": title, "content": content})
+        response = notify.send({title=stitle, content=scontent})
         if response.get("code") == 200:
             print("青龙通知推送成功")
         else:
