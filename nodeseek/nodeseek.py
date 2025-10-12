@@ -301,7 +301,7 @@ def send_ql_notification(stitle, scontent):
     """
 
     try:
-        response = notify.send({title=stitle, content=scontent})
+        response = notify.send(title=stitle, content=scontent)
         if response.get("code") == 200:
             print("青龙通知推送成功")
         else:
