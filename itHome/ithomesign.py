@@ -994,14 +994,13 @@ if __name__ == "__main__":
     user_hash = os.environ['HASH_CODE']
     ithome = IIhomeSign(userhash=user_hash)
 
-    home = cn(ithome.sign()).get("msg")
-    lapin = cn(ithome.signlapin()).get("msg")
+    home = cn(ithome.sign())
+    #lapin = cn(ithome.signlapin()).get("msg")
     yunrili = cn(ithome.signyunrili()).get("msg")
     yunriliAndroid = cn(ithome.signyunriliAndroid()).get("msg")
 
     msg = (
         f"it之家签到结果: {home}\n"
-        f"辣品签到结果: {lapin}\n"
         f"云日历签到结果: {yunrili}\n"
         f"云日历安卓签到结果: {yunriliAndroid}\n"
     )
